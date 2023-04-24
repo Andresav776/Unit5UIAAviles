@@ -53,7 +53,10 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        if (!gameObject.CompareTag("BAD")) { gameManager.GameOver(); }
+        if (!gameObject.CompareTag("BAD") && gameManager.isGameActive)
+        { 
+            gameManager.UpdateLives(-1);
+        }
     }
 
     // Update is called once per frame
